@@ -1,0 +1,4 @@
+cd ./*/
+rubocop -a
+rspec
+

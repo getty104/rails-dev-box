@@ -16,9 +16,15 @@ echo '/swapfile none swap defaults 0 0' >> /etc/fstab
 
 echo updating package information
 apt-add-repository -y ppa:brightbox/ruby-ng >/dev/null 2>&1
+
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
 apt-get -y update >/dev/null 2>&1
 
-install 'development tools' build-essential autoconf libtool
+install 'development tools' build-essential autoconf libtool mecab libmecab-dev mecab-ipadic mecab-ipadic-utf8 nodejs
+
+install Yarn yarn
 
 install Ruby ruby2.5 ruby2.5-dev
 update-alternatives --set ruby /usr/bin/ruby2.5 >/dev/null 2>&1
